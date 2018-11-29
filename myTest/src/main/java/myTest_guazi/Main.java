@@ -11,6 +11,7 @@ public class Main {
         Scanner in=new Scanner(System.in);
         int n=in.nextInt();
         int w=in.nextInt();
+        System.out.println("n="+n+",w="+w);
 
 
         //将组合保存在

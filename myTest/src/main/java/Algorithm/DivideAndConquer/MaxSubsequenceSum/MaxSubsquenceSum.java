@@ -1,10 +1,10 @@
-package Algorithm.MaxSubsequenceSum;
+package Algorithm.DivideAndConquer.MaxSubsequenceSum;
 
 import static javafx.application.Platform.exit;
 
 /**
  * Created by Administrator on 2018/5/13.
- * 最大字序列和
+ * 最大子序列和
  * 前提是序列中至少有一个正整数
  */
 public class MaxSubsquenceSum {
@@ -131,6 +131,32 @@ public class MaxSubsquenceSum {
             }
         }
         return maxSum;
+    }
+
+    /**
+     * 方法5：采用动态规划的思想，第一个数作为最大和的初始值，只有一个元素的结果集b[0]的和就是该对应元素。遍历数组，如果前n-1个结果集
+     * b[n-1]>0的话，那么n个元素的结果集就是b[n-1]+当前元素，如果小于等于0，那么还不如不加，那么n个元素的结果集就是该元素的值，这样就
+     * 该问题规模逐渐缩小，计算完n个元素的结果之后，需要更新当前最大和
+     * @param src
+     * @param b
+     * @param n
+     * @return
+     */
+
+    public static int maxSubsquenceSum5(int[] src,int[] b,int n){
+        int sum = src[0];
+        b[0] = src[0];
+        for(int i= 1;i<n;i++){
+            if(b[i-1]>0){
+                b[i] = b[i-1]+src[i];
+            }else{
+                b[i] = src[i];
+            }
+            if(b[i]>sum){
+                sum = b[i];
+            }
+        }
+        return sum;
     }
 
 }

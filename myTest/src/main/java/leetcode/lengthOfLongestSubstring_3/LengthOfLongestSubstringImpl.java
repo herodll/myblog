@@ -66,6 +66,19 @@ public class LengthOfLongestSubstringImpl {
          * 方法2：用i和j来分别表示当前不重复子串的头和尾，当子串的头和尾之间没有重复字符的时候，j++,也就是尾指针后移，
          *       当子串的头和尾之间有重复字符时，i++,也就是头指针后移。
          */
-        return 0;
+        //有问题
+        int i = 0;
+        int j = 0;
+        HashMap<Character,Integer> map = new HashMap<>();
+        while(j<s.length()){
+            if(!map.containsKey(s.charAt(j))&&i<=j){
+                map.put(s.charAt(j),j);
+            }else{
+                i++;
+            }
+            j++;
+        }
+        System.out.println(s.substring(i,j));
+        return j-i;
     }
 }
